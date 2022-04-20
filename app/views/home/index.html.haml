@@ -1,0 +1,61 @@
+%div.row
+  %div.card
+    %div.div-comp.pb-4
+      %h1= t('general.information')
+      %h1= t('general.price_actual')
+    %div.two-div
+      %div.left.form
+        %div.form-group-select.pt-10
+          = select_tag 'application', options_for_select(@set_application), {:include_blank => t('general.select_application'), :class => 'form-select', id: 'application'}
+              
+        %div.form-group
+          =number_field_tag :amount,nil, placeholder: t('general.amount')
+
+        %div.col-12.pt-10
+          %button#generate.btn.btn-login{disabled: true}= t('buttons.generate')
+
+      %div.right
+        %table
+          %title= t('general.price_actual')
+          %thead
+            %th App
+            %th Currency
+            %th Price
+          %tbody
+            - @currencies_price.each do |currency|
+              %tr
+                %td= currency[:application]
+                %td= currency[:name]
+                %td= currency[:price]
+            
+    %div
+      #proyection
+
+:javascript
+
+  $("#generate").on('click', function(){
+    let application = $("#application").val();
+    let amount = $("#amount").val();
+    let url = "#{add_proyection_home_index_url}"
+    $.get( url, {application,amount} );
+  })
+
+  $("#application").on('change', function(){
+    let application = $("#application").val();
+    let amount = $("#amount").val();
+    if((application) && (amount)){
+      $("#generate").prop('disabled', false);
+    }else{
+      $("#generate").prop('disabled', true);
+    }
+  })
+
+  $("#amount").on('change', function(){
+    let application = $("#application").val();
+    let amount = $("#amount").val();
+    if((application) && (amount)){
+      $("#generate").prop('disabled', false);
+    }else{
+      $("#generate").prop('disabled', true);
+    }
+  })

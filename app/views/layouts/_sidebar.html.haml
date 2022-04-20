@@ -1,0 +1,26 @@
+%nav#sidebar
+  %div.sidebar-header{align: "center"}
+    %div.sidebar-arrow
+      %div.logo
+        = image_tag 'icon-logo.jpeg'
+        %h1= current_user.name
+        %h2 
+          ID:
+          = current_user.id
+
+    %div.col-12.logomenu.nopadding
+      %div.container
+        %ul.list-unstyled.components{style: "margin-top:20px"}
+
+          %li.only{style: "margin-top:10px;"}
+            %a#Home.link-home{href: "/"}
+              = image_tag 'sidebar/home.svg', class: 'sidebar-button-img' 
+              %strong= t('home.title')
+                    
+
+          %li.only{style: "margin-top: auto;"}
+  
+          %li{style: "margin-top:10px"}
+            = link_to destroy_user_session_path(), method: :delete, class: 'sidebar-button font-white', id: 'logout-button' do
+              = image_tag 'sidebar/logout.png', class: 'sidebar-button-img'
+              = t('sidebar.logout')

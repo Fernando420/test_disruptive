@@ -1,0 +1,25 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Disruptive
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
+    %meta{name: "description", content: "Purpose Application UI is the following chapter we've finished in order to create a complete and robust solution next to the already known Purpose Website UI."}
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+      
+  %body
+    %div.main-container.mx-auto
+      %div.main-grid
+        %nav.container-nav
+          = render partial: 'layouts/sidebar'
+        %div.background-topbar
+          = render partial: 'layouts/topbar'
+          %div#notifications.mt-4
+            = render partial: 'notifications/flash'
+          %div.pt-10
+            = yield
+    = render partial: '/modals/general'

@@ -1,0 +1,149 @@
+@import '../../assets/stylesheets/tools/variables';
+@import '../../assets/stylesheets/tools/utilities';
+@import 'home';
+@import 'sessions';
+@import 'sidebar';
+@import 'topbar';
+
+.t-white{
+  color: var(--color-white);
+}
+
+.main-container{
+  @extend %grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90vh;
+}
+  
+.main-grid{
+  @extend %grid;
+  grid-template-columns: 244px 940px;
+  grid-template-rows: 101.5px 101.5px 112px 1fr;
+  grid-row-gap: $column-separator*0;
+  justify-self: center;
+} 
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+%btn-extender {
+  @extend .btn-submit;
+  @extend .btn-login;
+}
+
+.btn-submit{
+  margin: 15px;
+  width: 150px;
+  height: 40px;
+}
+
+.btn-login{
+  background-color: var(--color-four);
+  color: white;
+  font-size: 15px;
+  font-family: $monserrat;
+  font-weight: 100;
+  padding: 5px;
+}
+
+.pt-10{
+    padding-top: 10px;
+}
+
+.card{
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+$opacity-transition: opacity;
+$speed: ease-in-out;
+
+.modal-header {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  height: 16px;
+  text-decoration: none;
+  width: 16px;
+
+  svg {
+    width: 16px;
+  }
+}
+
+.modal-wrapper {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+#modal {
+  opacity: 0;
+  transition: $opacity-transition;
+  visibility:hidden;
+
+  &:target {
+    opacity: 1;
+    visibility:visible;
+
+    .modal-body {
+      opacity: 1;
+      transform: translateY(1);
+    }
+  }
+
+  .modal-body {
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: $opacity-transition;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.outside-trigger {
+  bottom: 0;
+  cursor: default;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.button__link {
+  text-decoration: none;
+}

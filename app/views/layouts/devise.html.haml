@@ -1,0 +1,21 @@
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
+    %meta{name: "description", content: "Purpose Application UI is the following chapter we've finished in order to create a complete and robust solution next to the already known Purpose Website UI."}
+    %meta{name: "author", content: "Webpixels"}
+    %link{rel: "icon", href: "#", type: "image/png"}
+    %title SuperStem
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body.body-login
+    %div.container
+      %div.authentication
+        %div#notifications.mt-4
+          = render partial: 'notifications/flash'
+        = yield
+

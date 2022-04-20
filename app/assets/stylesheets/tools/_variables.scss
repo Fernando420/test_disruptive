@@ -1,0 +1,45 @@
+/*---------------------------------------------------*\
+        var(--COLORS
+\*---------------------------------------------------*/
+
+/**
+* General colors
+*/
+:root {
+  --color-white: #FFFFFF;
+  --color-yellow: yellow;
+  --color-green: green ;
+  --color-primary: #16006e;
+  --color-second: #4b33aa;
+  --color-three: #4e39a0;
+  --color-four: #745cd1;
+  --test-marker-div-color: black;
+  --color-gray: #ebebeb;
+  --color-gray-dark: gray;
+  --color-blue: rgb(50, 81, 255);
+}
+
+
+/**
+* Home colors
+*/
+$background-menu: linear-gradient(to bottom, var(--color-four), var(--color-three), var(--color-second), var(--color-primary));;
+$font-color-title: var(--color-primary);
+$font-color-subtitle: var(--color-second);
+
+/**
+* Loggin colors
+*/
+
+$btn-loggin: var(--color-primary);
+/**
+* Constants
+*/
+$column-separator:20px;
+$loggin-container-size: 620px;
+
+/**
+* Fonts
+*/
+$monserrat: 'Montserrat', sans-serif;
+$font-size: 10px;

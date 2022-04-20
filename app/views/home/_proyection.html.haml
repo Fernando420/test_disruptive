@@ -1,0 +1,42 @@
+- if response[:success]
+  %div.proyections{id: "close_#{child_index}"}
+    
+    - response[:proyections].each do |proyection|
+      %div
+        %strong
+          %a.close{'data-id': "#{child_index}", role: "alert"} &times;
+        %h1= application(proyection[:application])
+        %table
+          %thead
+            %th= t("general.inversion")
+            %th= "#{proyection[:amount]} USD / #{proyection[:interest]}%"
+        %table
+          %thead
+            %th= proyection[:currency]
+          %tbody
+            %tr
+              %td
+                %table
+                  %thead
+                    %th= t('general.month')
+                    %th= t('general.amount_usd')
+                    %th= t('general.amount_crypto')
+                  %tbody
+                    - proyection[:data].each do |hi|
+                      %tr
+                        %td= hi[:month]
+                        %td= hi[:amount_usd]
+                        %td= hi[:amount_crypto]
+- else
+  %div.alert.alert-warning.alert-position{id: "close_#{child_index}"}
+    %strong
+      = response[:message]
+      !
+      %a.close{'data-id': "#{child_index}", role: "alert"} &times;
+
+:javascript
+
+  $('.close').on('click', function(){
+    let id = $(this).data('id');
+    $("#close_"+id).remove();
+  });
